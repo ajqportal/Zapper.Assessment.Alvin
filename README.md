@@ -16,3 +16,5 @@ Console.WriteLine(IsFeatureEnabled(loadedSettings, 4)); // check settings if use
 Console.WriteLine(IsFeatureEnabled(loadedSettings, 1)); // check settings if user has sms notification enabled; Output: false
 Console.WriteLine(loadedSettings); // output the settings; Output: "00010010"
 ```
+
+Note that I'm using .NET 8 for this coding challenge
