@@ -29,24 +29,3 @@ CREATE TABLE Transactions (
     CONSTRAINT FK_Transaction_Merchant 
         FOREIGN KEY (MerchantID) REFERENCES Merchants(MerchantID)
 );
-
-CREATE TABLE Wallets (
-    WalletID INT PRIMARY KEY IDENTITY(1,1),
-    CustomerID INT NOT NULL,
-    Balance DECIMAL(10,2) DEFAULT 0,
-    LastUpdated DATETIME2 DEFAULT SYSDATETIME(),
-    INDEX IX_Wallet_Customer (CustomerID),
-    CONSTRAINT FK_Wallet_Customer 
-        FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
-);
-
-CREATE TABLE WalletTransactions (
-    WalletTransactionID INT PRIMARY KEY IDENTITY(1,1),
-    WalletID INT NOT NULL,
-    TransactionType VARCHAR(20),
-    Amount DECIMAL(10,2) NOT NULL,
-    TransactionDate DATETIME2 DEFAULT SYSDATETIME(),
-    INDEX IX_WalletTransaction_Wallet (WalletID),
-    CONSTRAINT FK_WalletTransaction_Wallet 
-        FOREIGN KEY (WalletID) REFERENCES Wallets(WalletID)
-);
